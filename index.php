@@ -45,7 +45,7 @@
                                 <td><?= $r['FoodId'] ?></td>
                                 <td><?= $r['FoodName'] ?></td>
                                 <td><?= $r['FoodPrice'] ?></td>
-                                <td><?= $r['FoodId'] ?></td>
+                                <td><?= $r['MenuName'] ?></td>
                                 <td><img src="./image/<?= $r['FoodImage']; ?>" width="50px" height="50" alt="image" onclick="enlargeImg()" id="img1" ></td>
 
                                 <td><a href="updateFoodForm.php?FoodId=<?= $r['FoodId'] ?>" class="btn btn-warning btn-sm">แก้ไข</a></td>

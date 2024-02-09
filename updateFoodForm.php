@@ -39,7 +39,6 @@
                 <label for="name" class="col-sm-2 col-form-label"> ชื่อ:  </label>
               
                 <input type="text" name="FoodName" class="form-control" required value="<?php echo $result["FoodName"]; ?>">           
-           
             
                 <label for="name" class="col-sm-2 col-form-label"> ราคา :  </label>
              
