@@ -13,16 +13,16 @@
 
     require 'connect.php';
 
-    $sql_select = 'select * from food order by FoodId';
+    $sql_select = 'select * from food, menu order by FoodId';
     $stmt_s = $conn->prepare($sql_select);
     $stmt_s->execute();
-    echo "FoodId = ".$_GET['FoodId'];
+    // echo "FoodId = ".$_GET['FoodId'];
 
     if (isset($_GET['FoodId'])) {
         $sql_select_customer = 'SELECT * FROM food WHERE FoodId=?';
         $stmt = $conn->prepare($sql_select_customer);
         $stmt->execute([$_GET['FoodId']]);
-        echo "get = ".$_GET['FoodId'];
+        // echo "get = ".$_GET['FoodId'];
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -32,18 +32,34 @@
 <div class="container">
       <div class="row">
         <div class="col-md-4"> <br>
-          <h3>ฟอร์มแก้ไขข้อมูลลูกค้า</h3>
+          <h3>ฟอร์มแก้ไขข้อมูลอาหาร</h3>
           <form action="updateFood.php" method="POST">
            <input type="hidden" name="FoodId" value="<?= $result['FoodId'];?>">
             
-                <label for="name" class="col-sm-2 col-form-label"> ชื่อ:  </label>
+                <label for="name" class="col-sm-2 col-form-label">ชื่อ :  </label>
               
                 <input type="text" name="FoodName" class="form-control" required value="<?php echo $result["FoodName"]; ?>">           
             
-                <label for="name" class="col-sm-2 col-form-label"> ราคา :  </label>
+                <label for="name" class="col-sm-2 col-form-label">ราคา :  </label>
              
                 <input type="number" name="FoodPrice" class="form-control" required value="<?php echo $result["FoodPrice"] ?>">
-          
+                <br>
+                <label for="name" class="col-sm-2 col-form-label">รูปภาพ :  </label>
+
+                <input type="file" name="FoodImage" required value="<?php echo $result["FoodImage"] ?>">
+
+                <label for="name" class="col-sm-2 col-form-label">ประเภทอาหาร :  </label>
+
+                <select name="MenuId">
+                        <?php
+                            while ($cc = $stmt_s->fetch(PDO::FETCH_ASSOC)) :
+                        ?>
+                        <option value="<?php echo $cc["MenuId"]; ?>">
+                                <?php echo $cc["MenuName"]; ?>
+                        </option>
+                        <?php endwhile; ?>
+                </select>
+                <br>
             <br> <button type="submit" class="btn btn-primary">แก้ไขข้อมูล</button>
           </form>
         </div>

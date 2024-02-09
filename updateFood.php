@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['FoodId']) && isset($_POST['FoodName']) && isset($_POST['FoodPrice'])) {
+if (isset($_POST['FoodId']) && isset($_POST['FoodName']) && isset($_POST['FoodPrice']) && isset($_POST['FoodImage'])) {
     require 'connect.php';
 
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -8,18 +8,21 @@ if (isset($_POST['FoodId']) && isset($_POST['FoodName']) && isset($_POST['FoodPr
     $FoodId = $_POST['FoodId'];
     $FoodName = $_POST['FoodName'];
     $FoodPrice =  $_POST['FoodPrice'];
+    $FoodImage =  $_POST['FoodImage'];
 
     echo 'FoodId = ' . $FoodId;
     echo 'FoodName = ' . $FoodName;
     echo 'FoodPrice = ' . $FoodPrice;
+    echo 'FoodImage = ' . $FoodImage;
 
 
-    $sql = "UPDATE food SET FoodName = :FoodName, FoodPrice = :FoodPrice WHERE FoodId = :FoodId";
+    $sql = "UPDATE food SET FoodName = :FoodName, FoodPrice = :FoodPrice, FoodImage = :FoodImage WHERE FoodId = :FoodId";
     $stmt = $conn->prepare($sql);
     
     $stmt->bindParam(':FoodName', $_POST['FoodName']);
     $stmt->bindParam(':FoodPrice', $_POST['FoodPrice']);
     $stmt->bindParam(':FoodId', $_POST['FoodId']);
+    $stmt->bindParam(':FoodImage', $_POST['FoodImage']);
 
 
     echo '
