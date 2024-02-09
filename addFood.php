@@ -15,7 +15,7 @@
             -webkit-transform: scale(1.5);
             transform: scale(1.5);
         }
-    </style>0
+    </style>
 </head>
 <body>
     
@@ -23,7 +23,7 @@
     
     require "connect.php";
 
-    $sql_select = "SELECT * FROM food, menu";
+    $sql_select = "SELECT * FROM menu";
     $stmt_s = $conn->prepare($sql_select);
     $stmt_s->execute();
 

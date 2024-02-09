@@ -13,7 +13,7 @@
 
     require 'connect.php';
 
-    $sql_select = 'select * from food, menu order by FoodId';
+    $sql_select = 'select * from menu';
     $stmt_s = $conn->prepare($sql_select);
     $stmt_s->execute();
     // echo "FoodId = ".$_GET['FoodId'];
@@ -54,7 +54,7 @@
                         <?php
                             while ($cc = $stmt_s->fetch(PDO::FETCH_ASSOC)) :
                         ?>
-                        <option value="<?php echo $cc["MenuId"]; ?>">
+                        <option value="<?php echo $cc["MenuName"]; ?>">
                                 <?php echo $cc["MenuName"]; ?>
                         </option>
                         <?php endwhile; ?>

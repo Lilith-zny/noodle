@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12"> <br>
-                <h3>รายชื่อลูกค้า <a href="addFood.php" class="btn btn-info float-end">+เพิ่มข้อมูล</a> </h3> <br/>
+                <h3>เมนู <a href="addFood.php" class="btn btn-info float-end">+เพิ่มข้อมูล</a> </h3> <br/>
                 <!-- <table class="table table-striped  table-hover table-responsive table-bordered"> -->
                 <table id="customerTable" class="display table table-striped  table-hover table-responsive table-bordered ">
 
